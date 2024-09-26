@@ -17,6 +17,9 @@
 #define TIMER_USE 1
 #define TIME 500
 
+#define DOT_TIMER 2
+#define DOT_TIME 1000
+
 typedef enum
 {
 	INIT,
@@ -42,6 +45,8 @@ void exercise2_init()
 	HAL_GPIO_TogglePin(SEG_4_GPIO_Port, SEG_4_Pin);
 	HAL_GPIO_TogglePin(SEG_5_GPIO_Port, SEG_5_Pin);
 	HAL_GPIO_TogglePin(SEG_6_GPIO_Port, SEG_6_Pin);
+
+	setTimer(DOT_TIMER, DOT_TIME);
 }
 
 void exercise2_run()
@@ -101,5 +106,11 @@ void exercise2_run()
 			break;
 		default:
 			break;
+	}
+
+	if (isFlag(DOT_TIMER))
+	{
+		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+		setTimer(DOT_TIMER, DOT_TIME);
 	}
 }

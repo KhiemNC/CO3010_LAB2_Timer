@@ -15,8 +15,11 @@
 #define ENABLE_SEG 0
 #define DISABLE_SEG 1
 
-#define TIMER_USE 2
+#define TIMER_USE 3
 #define TIME 10
+
+#define DOT_TIMER 4
+#define DOT_TIME 1000
 
 const int MAX_LED = 4;
 int index_led = 0;
@@ -27,6 +30,7 @@ void exercise3_init()
 	exercise2_init();
 
 	setTimer(TIMER_USE, TIME);
+	setTimer(DOT_TIMER, DOT_TIME);
 }
 
 void exercise3_run()
@@ -41,6 +45,12 @@ void exercise3_run()
 		}
 
 		setTimer(TIMER_USE, TIME);
+	}
+
+	if (isFlag(DOT_TIMER))
+	{
+		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+		setTimer(DOT_TIMER, DOT_TIME);
 	}
 }
 
