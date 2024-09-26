@@ -10,6 +10,11 @@
 #define LED_ON 0
 #define LED_OFF 1
 
+#define ENABLE_SEG 0
+#define DISABLE_SEG 1
+
+Exercise1_State ex1_state = INIT;
+
 /**
   * @brief Use for testing all GPIOs necessary
   */
@@ -31,7 +36,40 @@ void exercise1_init()
   */
 void exercise1_run()
 {
+	switch (ex1_state) {
+		case INIT:
+			if (1)
+			{
+				ex1_state = LED1;
 
+				setTimer(0, 500);
+			}
+			break;
+		case LED1:
+			display7SEG(1);
+			enable_seg(0);
+
+			if (timer[0].flag == 1)
+			{
+				ex1_state = LED2;
+
+				setTimer(0, 500);
+			}
+			break;
+		case LED2:
+			display7SEG(2);
+			enable_seg(1);
+
+			if (timer[0].flag == 1)
+			{
+				ex1_state = LED1;
+
+				setTimer(0, 500);
+			}
+			break;
+		default:
+			break;
+	}
 }
 
 /**
@@ -142,5 +180,36 @@ void display7SEG(int num)
 			HAL_GPIO_WritePin(SEG_6_GPIO_Port, SEG_6_Pin, LED_OFF);
 			break;
 	}
+}
 
+void enable_seg(int num)
+{
+	switch (num) {
+		case 0:
+			HAL_GPIO_WritePin(EN_0_GPIO_Port, EN_0_Pin, ENABLE_SEG);
+			HAL_GPIO_WritePin(EN_1_GPIO_Port, EN_1_Pin, DISABLE_SEG);
+			HAL_GPIO_WritePin(EN_2_GPIO_Port, EN_2_Pin, DISABLE_SEG);
+			HAL_GPIO_WritePin(EN_3_GPIO_Port, EN_3_Pin, DISABLE_SEG);
+			break;
+		case 1:
+			HAL_GPIO_WritePin(EN_0_GPIO_Port, EN_0_Pin, DISABLE_SEG);
+			HAL_GPIO_WritePin(EN_1_GPIO_Port, EN_1_Pin, ENABLE_SEG);
+			HAL_GPIO_WritePin(EN_2_GPIO_Port, EN_2_Pin, DISABLE_SEG);
+			HAL_GPIO_WritePin(EN_3_GPIO_Port, EN_3_Pin, DISABLE_SEG);
+			break;
+		case 2:
+			HAL_GPIO_WritePin(EN_0_GPIO_Port, EN_0_Pin, DISABLE_SEG);
+			HAL_GPIO_WritePin(EN_1_GPIO_Port, EN_1_Pin, DISABLE_SEG);
+			HAL_GPIO_WritePin(EN_2_GPIO_Port, EN_2_Pin, ENABLE_SEG);
+			HAL_GPIO_WritePin(EN_3_GPIO_Port, EN_3_Pin, DISABLE_SEG);
+			break;
+		case 3:
+			HAL_GPIO_WritePin(EN_0_GPIO_Port, EN_0_Pin, DISABLE_SEG);
+			HAL_GPIO_WritePin(EN_1_GPIO_Port, EN_1_Pin, DISABLE_SEG);
+			HAL_GPIO_WritePin(EN_2_GPIO_Port, EN_2_Pin, DISABLE_SEG);
+			HAL_GPIO_WritePin(EN_3_GPIO_Port, EN_3_Pin, ENABLE_SEG);
+			break;
+		default:
+			break;
+	}
 }
