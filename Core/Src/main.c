@@ -41,7 +41,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define RUN_EXERCISE 2
+#define RUN_EXERCISE 3
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -101,6 +101,43 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
+
+  switch (RUN_EXERCISE)
+  {
+	  case 1:
+		  exercise1_init();
+		  break;
+	  case 2:
+		  exercise2_init();
+		  break;
+	  case 3:
+		  exercise3_init();
+		  break;
+	  case 4:
+		  exercise4_init();
+		  break;
+	  case 5:
+		  exercise5_init();
+		  break;
+	  case 6:
+		  exercise6_init();
+		  break;
+	  case 7:
+		  exercise7_init();
+		  break;
+	  case 8:
+		  exercise8_init();
+		  break;
+	  case 9:
+		  exercise9_init();
+		  break;
+	  case 10:
+		  exercise10_init();
+		  break;
+	  default:
+		  // Do nothing
+		  break;
+  }
   /* USER CODE END 2 */
 
   /* Infinite loop */

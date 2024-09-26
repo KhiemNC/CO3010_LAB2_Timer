@@ -14,5 +14,6 @@
 void exercise3_init();
 void exercise3_run();
 
+void update7SEG(int idx);
 
 #endif /* INC_EXERCISE3_H_ */
