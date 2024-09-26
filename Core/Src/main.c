@@ -22,8 +22,16 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "software_timer.h"
 #include "exercise1.h"
+#include "exercise2.h"
+#include "exercise3.h"
+#include "exercise4.h"
+#include "exercise5.h"
+#include "exercise6.h"
+#include "exercise7.h"
+#include "exercise8.h"
+#include "exercise9.h"
+#include "exercise10.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -33,7 +41,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define RUN_EXERCISE 1
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -99,7 +107,52 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	exercise1_run();
+	  switch (RUN_EXERCISE)
+	  {
+		  case 1:
+//  	  		  exercise1_init();
+			  exercise1_run();
+			  break;
+		  case 2:
+  //			  exercise2_init();
+			  exercise2_run();
+			  break;
+		  case 3:
+  //			  exercise3_init();
+			  exercise3_run();
+			  break;
+		  case 4:
+  //			  exercise4_init();
+			  exercise4_run();
+			  break;
+		  case 5:
+  //			  exercise5_init();
+			  exercise5_run();
+			  break;
+		  case 6:
+  //			  exercise6_init();
+			  exercise6_run();
+			  break;
+		  case 7:
+//			  exercise7_init();
+  			  exercise7_run();
+			  break;
+		  case 8:
+//  			  exercise8_init();
+			  exercise8_run();
+			  break;
+		  case 9:
+  //			  exercise9_init();
+			  exercise9_run();
+			  break;
+		  case 10:
+  //			  exercise10_init();
+			  exercise10_run();
+			  break;
+		  default:
+			  // Do nothing
+			  break;
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
