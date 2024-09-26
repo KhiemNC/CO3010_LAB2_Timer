@@ -14,4 +14,6 @@
 void exercise5_init();
 void exercise5_run();
 
+void updateClockBuffer();
+
 #endif /* INC_EXERCISE5_H_ */
