@@ -30,3 +30,12 @@ void timerRun()
 		}
 	}
 }
+
+int isFlag(int idx)
+{
+	if (timer[idx].flag)
+	{
+		return 1;
+	}
+	return 0;
+}

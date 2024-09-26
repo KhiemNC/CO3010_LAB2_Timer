@@ -11,13 +11,6 @@
 #include "main.h"
 #include "software_timer.h"
 
-typedef enum
-{
-	INIT,
-	LED1,
-	LED2
-} Exercise1_State;
-
 void exercise1_init();
 void exercise1_run();
 

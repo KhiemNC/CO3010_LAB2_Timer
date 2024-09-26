@@ -41,7 +41,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define RUN_EXERCISE 1
+#define RUN_EXERCISE 2
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/

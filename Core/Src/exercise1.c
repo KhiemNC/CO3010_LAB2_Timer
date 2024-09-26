@@ -13,6 +13,16 @@
 #define ENABLE_SEG 0
 #define DISABLE_SEG 1
 
+#define TIMER_USE 0
+#define TIME 500
+
+typedef enum
+{
+	INIT,
+	LED1,
+	LED2
+} Exercise1_State;
+
 Exercise1_State ex1_state = INIT;
 
 /**
@@ -42,29 +52,29 @@ void exercise1_run()
 			{
 				ex1_state = LED1;
 
-				setTimer(0, 500);
+				setTimer(TIMER_USE, TIME);
 			}
 			break;
 		case LED1:
 			display7SEG(1);
 			enable_seg(0);
 
-			if (timer[0].flag == 1)
+			if (isFlag(TIMER_USE))
 			{
 				ex1_state = LED2;
 
-				setTimer(0, 500);
+				setTimer(TIMER_USE, TIME);
 			}
 			break;
 		case LED2:
 			display7SEG(2);
 			enable_seg(1);
 
-			if (timer[0].flag == 1)
+			if (isFlag(TIMER_USE))
 			{
 				ex1_state = LED1;
 
-				setTimer(0, 500);
+				setTimer(TIMER_USE, TIME);
 			}
 			break;
 		default:
