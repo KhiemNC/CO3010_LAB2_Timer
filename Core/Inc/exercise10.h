@@ -14,4 +14,6 @@
 void exercise10_init();
 void exercise10_run();
 
+void shift_left_matrix();
+
 #endif /* INC_EXERCISE10_H_ */
