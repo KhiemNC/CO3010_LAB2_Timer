@@ -15,11 +15,14 @@
 #define ENABLE_SEG 0
 #define DISABLE_SEG 1
 
-#define TIMER_USE 3
-#define TIME 10
+#define TIMER_7SEG 3
+#define TIME_7SEG 20
 
-#define DOT_TIMER 4
-#define DOT_TIME 1000
+#define TIMER_DOT 4
+#define TIME_DOT 1000
+
+#define TIMER_LED_BLINKY 1
+#define TIME_LED_BLINKY 1000
 
 const int MAX_LED = 4;
 int index_led = 0;
@@ -29,13 +32,14 @@ void exercise3_init()
 {
 	exercise2_init();
 
-	setTimer(TIMER_USE, TIME);
-	setTimer(DOT_TIMER, DOT_TIME);
+	setTimer(TIMER_7SEG, TIME_7SEG);
+	setTimer(TIMER_DOT, TIME_DOT);
+	setTimer(TIMER_LED_BLINKY, TIME_LED_BLINKY);
 }
 
 void exercise3_run()
 {
-	if (isFlag(TIMER_USE))
+	if (isFlag(TIMER_7SEG))
 	{
 		update7SEG(index_led);
 		++index_led;
@@ -44,13 +48,19 @@ void exercise3_run()
 			index_led = 0;
 		}
 
-		setTimer(TIMER_USE, TIME);
+		setTimer(TIMER_7SEG, TIME_7SEG);
 	}
 
-	if (isFlag(DOT_TIMER))
+	if (isFlag(TIMER_DOT))
 	{
 		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-		setTimer(DOT_TIMER, DOT_TIME);
+		setTimer(TIMER_DOT, TIME_DOT);
+	}
+
+	if (isFlag(TIMER_LED_BLINKY))
+	{
+		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+		setTimer(TIMER_LED_BLINKY, TIME_LED_BLINKY);
 	}
 }
 
